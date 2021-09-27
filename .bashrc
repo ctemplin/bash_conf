@@ -108,9 +108,10 @@ unset use_color safe_term match_lhs sh
 
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
+alias eixt="exit"
 alias free='free -m'                      # show sizes in MB
-alias np='nano -w PKGBUILD'
 alias more=less
+alias np='nano -w PKGBUILD'
 alias octopi=/usr/bin/octopi              # full path required for some reason
 
 xhost +local:root > /dev/null 2>&1
