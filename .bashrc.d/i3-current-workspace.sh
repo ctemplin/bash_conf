@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+i3-list-workspaces ()
+{
+    i3-msg -t get_workspaces | jq  -cr '.[] | [.num, .name]'
+}
+
 i3-config-dir ()
 {
     dirname `i3-msg -t get_version | jq -r .loaded_config_file_name`
