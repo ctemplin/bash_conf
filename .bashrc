@@ -133,6 +133,8 @@ shopt -s expand_aliases
 
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
+# export HISTCONTROL=ignorespace|ignoredups|ignoreboth
+export HISTCONTROL=ignoreboth
 
 #
 # # ex - archive extractor
