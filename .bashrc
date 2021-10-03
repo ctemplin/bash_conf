@@ -115,6 +115,7 @@ alias np='nano -w PKGBUILD'
 alias octopi=/usr/bin/octopi              # full path required for some reason
 alias pacman='pacman --color=auto'
 alias yay='yay --color=auto'
+alias sbrc='source ~/.bashrc'
 
 xhost +local:root > /dev/null 2>&1
 
