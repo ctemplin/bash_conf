@@ -171,4 +171,5 @@ if [ -d ~/.bashrc.d ]; then
     for SCRIPT in $( ls ~/.bashrc.d/* ); do
         . ${SCRIPT}
     done
+    unset SCRIPT
 fi
