@@ -117,6 +117,7 @@ alias pacman='pacman --color=auto'
 alias yay='yay --color=auto'
 alias sbrc='source ~/.bashrc'
 alias h='hhelp'; complete -c h
+alias i3errorlog='less -e +G `i3 --get-socketpath | sed "s/ipc-socket/errorlog/"`'
 
 xhost +local:root > /dev/null 2>&1
 
