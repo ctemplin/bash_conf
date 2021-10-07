@@ -2,6 +2,7 @@
 # ~/.bashrc
 #
 
+# Don't run for non-interactive shells
 [[ $- != *i* ]] && return
 
 colors() {
@@ -111,12 +112,13 @@ alias df='df -h'                          # human-readable sizes
 alias eixt="exit"
 alias free='free -m'                      # show sizes in MB
 alias more=less
-alias np='nano -w PKGBUILD'
 alias octopi=/usr/bin/octopi              # full path required for some reason
 alias pacman='pacman --color=auto'
 alias yay='yay --color=auto'
 alias sbrc='source ~/.bashrc'
 alias h='hhelp'; complete -c h
+alias pg='pgrep'
+alias pga='pgrep -a'
 alias i3errorlog='less -e +G `i3 --get-socketpath | sed "s/ipc-socket/errorlog/"`'
 
 xhost +local:root > /dev/null 2>&1
