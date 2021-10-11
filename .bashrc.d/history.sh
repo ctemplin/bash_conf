@@ -1,1 +1,1 @@
-alias history='history | less -e +G'
+alias history='builtin history | less -e +G'

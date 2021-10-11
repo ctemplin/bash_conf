@@ -104,6 +104,7 @@ fi
 unset use_color safe_term match_lhs sh
 
 alias ls='ls --color=auto -F'
+alias sl='ls --color=auto -F'
 alias ll='ls -l --color=auto -F'
 alias la='ls -Al --color=auto -F'
 alias lsd='ls */ -dl'
@@ -124,6 +125,7 @@ alias h='hhelp'; complete -c h
 alias pg='pgrep'
 alias pga='pgrep -a'
 alias i3errorlog='less -e +G `i3 --get-socketpath | sed "s/ipc-socket/errorlog/"`'
+alias withless='$(builtin history -p !!)|less'
 
 xhost +local:root > /dev/null 2>&1
 
