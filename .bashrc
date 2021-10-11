@@ -126,6 +126,7 @@ alias pg='pgrep'
 alias pga='pgrep -a'
 alias i3errorlog='less -e +G `i3 --get-socketpath | sed "s/ipc-socket/errorlog/"`'
 alias withless='$(builtin history -p !!)|less'
+alias weather='( curl -s wttr.in/?format="%c+%t+%p+%w" | tee ~/tmp/WTTR_RESP_BODY.txt ) && echo' # final echo=newline
 
 xhost +local:root > /dev/null 2>&1
 
