@@ -127,6 +127,7 @@ alias pga='pgrep -a'
 alias i3errorlog='less -e +G `i3 --get-socketpath | sed "s/ipc-socket/errorlog/"`'
 alias withless='$(builtin history -p !!)|less'
 alias weather='wttr_fetch'
+alias cron-status-log='systemctl status cronie'
 
 xhost +local:root > /dev/null 2>&1
 
