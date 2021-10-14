@@ -15,6 +15,11 @@ i3-ws-num ()
     i3-msg -t get_workspaces | jq '.[] | select(.focused)| .num'
 }
 
+i3-ws-name ()
+{
+    i3-msg -t get_workspaces | jq '.[] | select(.focused)| .name'
+}
+
 i3-wsj-file ()
 {
     local WSNUM
