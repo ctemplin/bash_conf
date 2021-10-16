@@ -2,5 +2,5 @@
 wttr_fetch ()
 {
    # final echo is newline for stdout readability
-  ( curl -s wttr.in/?format="%c+%t+%p+%w" | tee ${HOME}/tmp/WTTR_RESP_BODY.txt ) && echo;
+  ( curl --fail -s wttr.in/?format="%c+%t+%p+%w" | tee ${HOME}/tmp/WTTR_RESP_BODY.txt ) && echo;
 }
