@@ -184,3 +184,5 @@ if [ -d ~/.bashrc.d ]; then
     done
     unset SCRIPT
 fi
+
+if (( $SHLVL == 1 )); then echo "SHLVL: ${SHLVL} - NON-DAEMONIZED"; else echo "SHLVL: ${SHLVL} - DAEMONIZED"; fi
