@@ -20,6 +20,17 @@ i3-ws-name ()
     i3-msg -t get_workspaces | jq -r '.[] | select(.focused)| .name'
 }
 
+i3-ws-text ()
+{
+    i3-msg -t get_workspaces | jq  -cr '.[] | select(.focused) | [.num, (.name | match( "(?>\\d+:\\P{In_Basic_Latin}*)\\K([\\p{ASCII}\\s]+)") | .captures[0].string )] | .[1] '
+    # i3-msg -t get_workspaces | jq '.[] | select(.focused)| .name | scan( "(?>\\d+:\\P{In_Basic_Latin}?)\\K[\\p{ASCII}\\s]+" )'
+}
+
+i3-con-id ()
+{
+    i3-msg -t get_tree | jq -j ' recurse((.nodes, .floating_nodes)[]) | select(.focused == true) | .id '
+}
+
 i3-wsj-file ()
 {
     local WSNUM
