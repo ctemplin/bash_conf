@@ -185,4 +185,5 @@ if [ -d ~/.bashrc.d ]; then
     unset SCRIPT
 fi
 
-if (( $SHLVL == 1 )); then echo "SHLVL: ${SHLVL} - NON-DAEMONIZED"; else echo "SHLVL: ${SHLVL} - DAEMONIZED"; fi
+PCOM=$(ps -q $PPID -o comm=)
+if [[ $PCOM == urxvtd ]]; then echo "$PPID running in $PCOM daemon "; else echo "$PPID running in separate $PCOM process"; fi
