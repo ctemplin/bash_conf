@@ -53,6 +53,17 @@ sct ()
         echo "error: no title provided"
     fi
 }
+# Variation of function above with DEBUG abuse.
+# Allows title change to take effect before calling function returns.
+sct-debug ()
+{
+    STR="$*"
+    if (( ${#STR} > 0 )) ; then
+        trap 'echo -ne "\033]0;eman $1\007"' DEBUG;
+    else
+        echo "error: no title provided"
+    fi
+}
 alias set-custom-title='sct'
 cct ()
 {
