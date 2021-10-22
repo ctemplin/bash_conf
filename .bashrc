@@ -59,7 +59,7 @@ sct-debug ()
 {
     STR="$*"
     if (( ${#STR} > 0 )) ; then
-        trap 'echo -ne "\033]0;eman $1\007"' DEBUG;
+        trap 'echo -ne "\033]0;${STR}\007"' DEBUG;
     else
         echo "error: no title provided"
     fi
