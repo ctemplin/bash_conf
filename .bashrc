@@ -149,17 +149,16 @@ complete -cf sudo
 # it regains control.  #65623
 # http://cnswww.cns.cwru.edu/~chet/bash/FAQ (E11)
 shopt -s checkwinsize
-
 shopt -s expand_aliases
-
-# export QT_SELECT=4
-
+shopt -s cdspell
+shopt -s dotglob
+shopt -s extglob
+shopt -s hostcomplete
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
 # export HISTCONTROL=ignorespace|ignoredups|ignoreboth
 export HISTCONTROL=ignoreboth
 
-#
 # # ex - archive extractor
 # # usage: ex <file>
 ex ()
