@@ -32,6 +32,8 @@ colors() {
   done
 }
 
+export BASH_COMPLETION_USER_DIR=${HOME}/.bash-completion
+export BASH_COMPLETION_USER_FILE=${BASH_COMPLETION_USER_DIR}/bash_completion
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 
 # Change the window title of X terminals
@@ -135,10 +137,6 @@ alias sbrc='source ~/.bashrc'
 alias h='hhelp'; complete -c h
 alias pg='pgrep -i'
 alias pga='pgrep -a -i'
-# For some reason, the above sourcing of /usr/share/bash-completion/bash_completion
-# doesn't make the individual completions available to the shell here.
-# So re-sourcing specify completion function.
-source /usr/share/bash-completion/completions/pgrep && complete -F _pgrep pg pga
 alias i3errorlog='less -e +G `i3 --get-socketpath | sed "s/ipc-socket/errorlog/"`'
 alias withless='$(builtin history -p !!)|less'
 alias weather='wttr_fetch'
