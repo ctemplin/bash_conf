@@ -11,4 +11,3 @@ hhelp ()
   fi
   return 0
 }
-complete -c hhelp

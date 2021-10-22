@@ -1,0 +1,3 @@
+# sourced by /usr/share/bash-completion/bash_completion
+
+complete -c hhelp h

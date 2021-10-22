@@ -134,7 +134,7 @@ alias octopi=/usr/bin/octopi              # full path required for some reason
 alias pacman='pacman --color=auto'
 alias yay='yay --color=auto'
 alias sbrc='source ~/.bashrc'
-alias h='hhelp'; complete -c h
+alias h='hhelp'
 alias pg='pgrep -i'
 alias pga='pgrep -a -i'
 alias i3errorlog='less -e +G `i3 --get-socketpath | sed "s/ipc-socket/errorlog/"`'

@@ -1,0 +1,3 @@
+
+source /usr/share/bash-completion/completions/man
+complete -F _man eman

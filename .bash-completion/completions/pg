@@ -1,0 +1,3 @@
+
+source /usr/share/bash-completion/completions/pgrep
+complete -F _pgrep pg pga
