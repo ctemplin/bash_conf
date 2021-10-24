@@ -7,7 +7,7 @@ i3-list-workspaces ()
 
 i3-config-dir ()
 {
-    dirname `i3-msg -t get_version | jq -r .loaded_config_file_name`
+    dirname "$(i3-msg -t get_version | jq -r .loaded_config_file_name)"
 }
 
 i3-ws-num ()
@@ -26,9 +26,24 @@ i3-ws-text ()
     # i3-msg -t get_workspaces | jq '.[] | select(.focused)| .name | scan( "(?>\\d+:\\P{In_Basic_Latin}?)\\K[\\p{ASCII}\\s]+" )'
 }
 
-i3-con-id ()
+i3-focused-node ()
 {
-    i3-msg -t get_tree | jq -j ' recurse((.nodes, .floating_nodes)[]) | select(.focused == true) | .id '
+    i3-msg -t get_tree | jq ' recurse((.nodes, .floating_nodes)[]) | select(.focused == true)'
+}
+
+i3-focused-node-parent ()
+{
+    i3-msg -t get_tree | jq -r ' getpath(path(recurse((.nodes, .floating_nodes)[]) | select(.focused == true))[:-2]) '
+}
+
+i3-focused-node-percent ()
+{
+    i3-focused-node | jq -j ' .percent '
+}
+
+i3-focused-node-ppts ()
+{
+    i3-focused-node-percent | jq -j '( . * 100 ) | round '
 }
 
 i3-wsj-file ()
