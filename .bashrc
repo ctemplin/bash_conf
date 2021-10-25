@@ -1,6 +1,7 @@
 #
 # ~/.bashrc
 #
+# shellcheck shell=bash
 
 # Don't run for non-interactive shells
 [[ $- != *i* ]] && return
