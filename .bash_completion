@@ -1,4 +1,11 @@
 # shellcheck shell=bash
 # sourced by /usr/share/bash-completion/bash_completion
 
+# If the completion function used is auto-loaded by bash,
+# define the completion here.
+# If not, create a file in $BASH_COMPLETION_USER_DIR, so it can be sourced
+# on-demand.
+
+# shellcheck disable=SC2046
+$(complete -p cd)f
 complete -c hhelp h
