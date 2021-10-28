@@ -143,6 +143,11 @@ alias withless='$(builtin history -p !!)|less'
 alias weather='wttr_fetch'
 alias cron-status-log='systemctl status cronie'
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ]; then
+  PATH="$HOME/bin:$PATH"
+fi
+
 xhost +local:root > /dev/null 2>&1
 
 complete -cf sudo
