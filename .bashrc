@@ -37,10 +37,13 @@ export BASH_COMPLETION_USER_DIR=${HOME}/.bash-completion
 export BASH_COMPLETION_USER_FILE=${BASH_COMPLETION_USER_DIR}/bash_completion
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 
-# Change the window title of X terminals
+# PROMPT_COMMAND is run before every redraw of $PS1
 case ${TERM} in
   xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
+    # First line sets conditional to display non-0 return val in $PS1.
+    # Second line sets window title.
+    PROMPT_COMMAND='RET=$?; if (( RET == 0 )); then RET=""; else RET="[$RET] "; fi;\
+    echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
     ;;
   screen*)
     PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
@@ -103,7 +106,7 @@ if ${use_color} ; then
   if [[ ${EUID} == 0 ]] ; then
     PS1='\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
   else
-    PS1='[\[\033[01;31m\]\u@\h\033[m\[\033[01;37m\] \W\[\033[01;32m\]]\$\[\033[00m\] '
+    PS1='[\[\033[03;33m\]\u@\h\[\033[m\] \[\033[01;31m\]${RET}\[\033[00m\]\W]\$ '
   fi
 
 else
