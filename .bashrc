@@ -41,8 +41,11 @@ export BASH_COMPLETION_USER_FILE=${BASH_COMPLETION_USER_DIR}/bash_completion
 case ${TERM} in
   xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
     # First line sets conditional to display non-0 return val in $PS1.
-    # Second line sets window title.
-    PROMPT_COMMAND='RET=$?; if (( RET == 0 )); then RET=""; else RET="[$RET] "; fi;\
+    # Second line sets conditional to display non-0 background jobs count. 
+    # Third line sets window title.
+    PROMPT_COMMAND='\
+    RET=$?; if (( RET == 0 )); then RET=""; else RET="[$RET]"; fi;\
+    JC=$(jobs -p | wc -l); if (( JC == 0 )); then JC=""; else JC="{$JC}"; fi;\
     echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
     ;;
   screen*)
@@ -106,7 +109,7 @@ if ${use_color} ; then
   if [[ ${EUID} == 0 ]] ; then
     PS1='\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
   else
-    PS1='[\[\033[03;33m\]\u@\h\[\033[m\] \[\033[01;31m\]${RET}\[\033[00m\]\W]\$ '
+    PS1='[\[\033[03;33m\]\u@\h\[\033[m\] \[\033[01;35m\]${JC}\[\033[00m\]\[\033[01;31m\]${RET}\[\033[00m\]\W]\$ '
   fi
 
 else
