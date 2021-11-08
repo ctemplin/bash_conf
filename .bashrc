@@ -4,6 +4,8 @@
 # shellcheck shell=bash
 
 # Don't run for non-interactive shells
+# NOTE: /etc/bash.bashrc (which sources this file) also starts with with this
+# check. Harmless but redundant?
 [[ $- != *i* ]] && return
 
 colors() {
@@ -123,6 +125,7 @@ fi
 
 unset use_color safe_term match_lhs sh
 
+alias i3-socket='i3 --get-socketpath'
 alias ls='ls --color=auto -F'
 alias sl='ls --color=auto -F'
 alias ll='ls -l --color=auto -F'
@@ -136,6 +139,7 @@ alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias eixt="exit"
 alias free='free -m'                      # show sizes in MB
+alias ggv='gh gist view'
 alias more=less
 alias octopi=/usr/bin/octopi              # full path required for some reason
 alias pacman='pacman --color=auto'
