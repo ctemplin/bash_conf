@@ -135,6 +135,8 @@ alias lsl='ls -Altr --color=auto -F'
 alias grep='grep --color=auto -d skip'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+FONT_CMD="printf \'\\\33]50;%s\\\007\' \"$(xrdb -query -get URxvt.font)\""
+alias font=${FONT_CMD}                    # C-M-e expand and edit
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias eixt="exit"
