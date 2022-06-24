@@ -148,6 +148,7 @@ alias i3errorlog='less -e +G `i3 --get-socketpath | sed "s/ipc-socket/errorlog/"
 alias withless='$(builtin history -p !!)|less'
 alias weather='wttr_fetch'
 alias cron-status-log='systemctl status cronie'
+alias subnet-mask='ifconfig wlp3s0 | awk '\''/netmask/{ print $4;}'\'' | tee /dev/tty | xclip && echo "copied via xclip"'
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ]; then
