@@ -22,7 +22,7 @@ i3-ws-name ()
 
 i3-ws-text ()
 {
-    i3-msg -t get_workspaces | jq  -cr '.[] | select(.focused) | [.num, (.name | match( "(?>\\d+:\\P{In_Basic_Latin}*)\\K([\\p{ASCII}\\s]+)") | .captures[0].string )] | .[1] '
+    i3-msg -t get_workspaces | jq  -cr '.[] | select(.focused) | [.num, (.name | match( "(?>\\d+:\\P{In_Basic_Latin}*)\\s*\\K([\\p{ASCII}\\s]+)") | .captures[0].string )] | .[1] '
     # i3-msg -t get_workspaces | jq '.[] | select(.focused)| .name | scan( "(?>\\d+:\\P{In_Basic_Latin}?)\\K[\\p{ASCII}\\s]+" )'
 }
 
