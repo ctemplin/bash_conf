@@ -108,6 +108,8 @@ if ${use_color} ; then
     fi
   fi
 
+  # TS (TEXT DECORATION): 01=bold 02=? 03=italics 04=underline 05=blinking
+  # \[\033[TS;FG;BGm]
   if [[ ${EUID} == 0 ]] ; then
     PS1='\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
   else
