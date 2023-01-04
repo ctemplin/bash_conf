@@ -51,27 +51,24 @@ i3-wsj-file ()
     local WSTEXT
     if [ -z "$1" ]; then WSTEXT=$(i3-ws-text); else WSTEXT=$1; fi
     wsfile="$(i3-config-dir)/ws/workspace-${WSTEXT}.jsonc"
-    if [ -f $wsfile ]
+    if [ -f "$wsfile" ]
     then
-        echo $wsfile
+        echo "$wsfile"
     else
-        echo 'No file matching: ' $wsfile
+        echo 'No file matching: ' "$wsfile"
         return 1
     fi
 }
 
 i3-wsj-diff ()
 {
-    local WSNUM
-    if [ -z "$1" ]; then WSNUM=$(i3-ws-num); else WSNUM=$1; fi
     local WSFILE
     WSFILE=$(i3-wsj-file "$(i3-ws-text)")
-    if [ "$?" == 0 ]
+    if [ ! "$WSFILE" == 0 ]
     then
-        i3-save-tree | diff -w --color $WSFILE -
+        i3-save-tree | diff -w --color "$WSFILE" -
     else
-        echo $WSFILE
+        echo "$WSFILE"
     fi
-    
 }
 
