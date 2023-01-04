@@ -31,6 +31,11 @@ i3-focused-node ()
     i3-msg -t get_tree | jq ' recurse((.nodes, .floating_nodes)[]) | select(.focused == true)'
 }
 
+i3-focused-node-floating ()
+{
+    i3-msg -t get_tree | jq -j ' recurse((.nodes, .floating_nodes)[]) | select(.focused == true) | .floating'
+}
+
 i3-focused-node-parent ()
 {
     i3-msg -t get_tree | jq -r ' getpath(path(recurse((.nodes, .floating_nodes)[]) | select(.focused == true))[:-2]) '
