@@ -2,8 +2,9 @@
 
 get_display_dimensions ()
 {
+  # shellcheck disable=SC2034  # Unused variables left for readability
   # from https://superuser.com/questions/418699/get-display-resolution-from-the-command-line-for-linux-desktop
-  read RES_X RES_Y <<<$(xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $3, $4}')
+  read -r RES_X RES_Y <<<"$(xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $3, $4}')"
 }
 
 warp_pointer_zero ()
@@ -13,6 +14,7 @@ warp_pointer_zero ()
 
 warp_pointer_con_center ()
 {
+  # shellcheck source=/dev/null
   source ~/.bashrc.d/i3-current-workspace.sh
   local WIN_ID XINFO
   WIN_ID="$(i3-focused-node | jq .window)"
