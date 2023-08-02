@@ -156,7 +156,9 @@ alias i3errorlog='less -e +G `i3 --get-socketpath | sed "s/ipc-socket/errorlog/"
 alias withless='$(builtin history -p !!)|less'
 alias weather='wttr_fetch'
 alias cron-status-log='systemctl status cronie'
-alias subnet-mask='ifconfig wlp3s0 | awk '\''/netmask/{ print $4;}'\'' | tee /dev/tty | xclip && echo "copied via xclip"'
+alias iw-interface='ls --indicator-style=none /sys/class/ieee80211/*/device/net/'
+# shellcheck disable=SC2142
+alias subnet-mask='ifconfig `iw-interface` | awk '\''/netmask/{ print $4;}'\'' | tee /dev/tty | xclip && echo "copied via xclip"'
 alias qemu-mj='qemu-system-x86_64 --hda qemu-disk-manjaro-i3-shade-test.img -m 4G --cdrom manjaro-i3-21.1.2-minimal-210907-linux513.iso --boot d'
 
 # set PATH so it includes user's private bin if it exists
