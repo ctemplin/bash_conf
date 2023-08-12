@@ -128,12 +128,12 @@ fi
 unset use_color safe_term match_lhs sh
 
 alias i3-socket='i3 --get-socketpath'
-alias ls='ls --color=auto -F'
-alias sl='ls --color=auto -F'
-alias ll='ls -l --color=auto -F'
-alias la='ls -Al --color=auto -F'
-alias lsd='ls */ -dl'
-alias lsl='ls -Altr --color=auto -F'
+alias ls='/usr/bin/ls --color=auto -F'
+alias sl='/usr/bin/ls --color=auto -F'
+alias ll='/usr/bin/ls -l --color=auto -F'
+alias la='/usr/bin/ls -Al --color=auto -F'
+alias lsd='/usr/bin/ls -dl --color=auto */'
+alias lsl='/usr/bin/ls -Altr --color=auto -F'
 alias grep='grep --color=auto -d skip'
 alias egrep='grep -E --color=auto'
 alias fgrep='grep -F --color=auto'
