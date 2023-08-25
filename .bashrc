@@ -11,6 +11,7 @@
 colors() {
   local fgc bgc vals seq0
 
+  #shellcheck disable=SC2016
   printf "Color escapes are %s\n" '\e[${value};...;${value}m'
   printf "Values 30..37 are \e[33mforeground colors\e[m\n"
   printf "Values 40..47 are \e[43mbackground colors\e[m\n"
@@ -28,7 +29,9 @@ colors() {
 
       seq0="${vals:+\e[${vals}m}"
       printf "  %-9s" "${seq0:-(default)}"
+      # shellcheck disable=SC2059
       printf " ${seq0}TEXT\e[m"
+      # shellcheck disable=SC2059
       printf " \e[${vals:+${vals+$vals;}}1mBOLD\e[m"
     done
     echo; echo
@@ -37,6 +40,7 @@ colors() {
 
 export BASH_COMPLETION_USER_DIR=${HOME}/.bash-completion
 export BASH_COMPLETION_USER_FILE=${BASH_COMPLETION_USER_DIR}/bash_completion
+# shellcheck source=/dev/null
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 
 # PROMPT_COMMAND is run before every redraw of $PS1
@@ -102,9 +106,9 @@ if ${use_color} ; then
   # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
   if type -P dircolors >/dev/null ; then
     if [[ -f ~/.dir_colors ]] ; then
-      eval $(dircolors -b ~/.dir_colors)
+      eval "$(dircolors -b ~/.dir_colors)"
     elif [[ -f /etc/DIR_COLORS ]] ; then
-      eval $(dircolors -b /etc/DIR_COLORS)
+      eval "$(dircolors -b /etc/DIR_COLORS)"
     fi
   fi
 
@@ -137,8 +141,10 @@ alias lsl='/usr/bin/ls -Altr --color=auto -F'
 alias grep='grep --color=auto -d skip'
 alias egrep='grep -E --color=auto'
 alias fgrep='grep -F --color=auto'
+# shellcheck disable=SC2089
 FONT_CMD="printf \'\\\33]50;%s\\\007\' \"$(xrdb -query -get URxvt.font)\""
-alias font=${FONT_CMD}                    # C-M-e expand and edit
+# shellcheck disable=SC2139
+alias font="${FONT_CMD}"                  # C-M-e expand and edit
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias eixt="exit"
@@ -191,19 +197,19 @@ export HISTCONTROL=ignoreboth
 # # usage: ex <file>
 ex ()
 {
-  if [ -f $1 ] ; then
+  if [ -f "$1" ] ; then
     case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
+      *.tar.bz2)   tar xjf "$1"   ;;
+      *.tar.gz)    tar xzf "$1"   ;;
+      *.bz2)       bunzip2 "$1"   ;;
+      *.rar)       unrar x "$1"     ;;
+      *.gz)        gunzip "$1"    ;;
+      *.tar)       tar xf "$1"    ;;
+      *.tbz2)      tar xjf "$1"   ;;
+      *.tgz)       tar xzf "$1"   ;;
+      *.zip)       unzip "$1"     ;;
+      *.Z)         uncompress "$1";;
+      *.7z)        7z x "$1"      ;;
       *)           echo "'$1' cannot be extracted via ex()" ;;
     esac
   else
@@ -217,8 +223,9 @@ export NO_AT_BRIDGE=1
 stty -ixon
 
 if [ -d ~/.bashrc.d ]; then
-    for SCRIPT in $( ls ~/.bashrc.d/* ); do
-        . ${SCRIPT}
+    for SCRIPT in ~/.bashrc.d/*; do
+        # shellcheck source=/dev/null
+        . "${SCRIPT}"
     done
     unset SCRIPT
 fi
