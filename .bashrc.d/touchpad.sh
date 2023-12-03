@@ -10,11 +10,11 @@ toggle_touchpad_enabled ()
 
   if [[ $IS_ENABLED == "0" ]];
     then xinput enable  "${DEVICE_NAME}" 
-    notify-send -e -t 500 "TouchPad" "ENABLED";
+    notify-send -e -t 1500 "TouchPad" "ENABLED";
   fi
   if [[ $IS_ENABLED == "1" ]];
     then xinput disable "${DEVICE_NAME}"
-    notify-send -e -t 500 "TouchPad" "DISABLED";
+    notify-send -e -t 1500 "TouchPad" "DISABLED";
   fi
 
 }
@@ -32,12 +32,12 @@ toggle_tapping_enabled ()
   if [[ $IS_ENABLED == "0" ]];
     then xinput set-prop "${DEVICE_NAME}" "libinput Tapping Enabled" "1" && \
       xinput set-prop  "${DEVICE_NAME}" "libinput Scroll Method Enabled" "1" "0" "0"
-    notify-send -e -t 500 "Tapping" "ENABLED";
+    notify-send -e -t 1500 "Tapping" "ENABLED";
   fi
   if [[ $IS_ENABLED == "1" ]];
     then xinput set-prop "${DEVICE_NAME}" "libinput Tapping Enabled" "0" && \
       xinput set-prop  "${DEVICE_NAME}" "libinput Scroll Method Enabled" "0" "1" "0"
-    notify-send -e -t 500 "Tapping" "DISABLED";
+    notify-send -e -t 1500 "Tapping" "DISABLED";
   fi
 
 }
