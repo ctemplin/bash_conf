@@ -6,7 +6,7 @@ toggle_touchpad_enabled ()
   DEVICE_NAME='SynPS/2 Synaptics TouchPad'
 
   local IS_ENABLED
-  IS_ENABLED=$(xinput list-props 12 | grep -Po  '.*Device Enabled.*:\s*\K(.*)')
+  IS_ENABLED=$(xinput list-props "${DEVICE_NAME}" | grep -Po  '.*Device Enabled.*:\s*\K(.*)')
 
   if [[ $IS_ENABLED == "0" ]];
     then xinput enable  "${DEVICE_NAME}" 
@@ -27,7 +27,7 @@ toggle_tapping_enabled ()
   DEVICE_NAME='SynPS/2 Synaptics TouchPad'
 
   local IS_ENABLED
-  IS_ENABLED=$(xinput list-props 12 | grep -Po  '.*Tapping Enabled\s*\(\d*\):\s*\K(.*)')
+  IS_ENABLED=$(xinput list-props "${DEVICE_NAME}" | grep -Po  '.*Tapping Enabled\s*\(\d*\):\s*\K(.*)')
 
   if [[ $IS_ENABLED == "0" ]];
     then xinput set-prop "${DEVICE_NAME}" "libinput Tapping Enabled" "1" && \
