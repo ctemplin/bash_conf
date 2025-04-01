@@ -2,7 +2,7 @@
 
 main ()
 {
-  local DEVICE_NAME, ICON_PATH
+  local DEVICE_NAME ICON_PATH
   DEVICE_NAME='SynPS/2 Synaptics TouchPad'
   ICON_PATH='/usr/share/icons/Papirus/128x128/devices/input-touchpad.svg'
 
