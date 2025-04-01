@@ -38,6 +38,8 @@ colors() {
   done
 }
 
+export WTTR_LOC="Austin"
+
 export BASH_COMPLETION_USER_DIR=${HOME}/.bash-completion
 export BASH_COMPLETION_USER_FILE=${BASH_COMPLETION_USER_DIR}/bash_completion
 # shellcheck source=/dev/null
