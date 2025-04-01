@@ -42,6 +42,8 @@ export WTTR_LOC="Austin"
 
 export BASH_COMPLETION_USER_DIR=${HOME}/.bash-completion
 export BASH_COMPLETION_USER_FILE=${BASH_COMPLETION_USER_DIR}/bash_completion
+
+# yay -Sy bash-completion - to get extra completions and bash_completion script in following cmd
 # shellcheck source=/dev/null
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 
