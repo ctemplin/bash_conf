@@ -1,0 +1,4 @@
+# Machine-specific aliases for Lenovo P14s Gen 2 named "Pareto"
+alias mon_on="xrandr --output HDMI-1 --auto --right-of eDP-1"
+alias mon_off="xrandr --output HDMI-1 --off"
+

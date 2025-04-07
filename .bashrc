@@ -173,6 +173,12 @@ alias qemu-mj='qemu-system-x86_64 --hda qemu-disk-manjaro-i3-shade-test.img -m 4
 alias type='type -a'
 alias journalctl-boot='journalctl --system --boot=0 --priority=4 -r'
 
+# include hardware-specific aliases
+# make ~/bash_aliases symlink to file in /hwd
+if [ -f "$HOME/.bash_aliases" ] ; then
+  source $HOME/.bash_aliases
+fi
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ]; then
   PATH="$HOME/bin:$PATH"
