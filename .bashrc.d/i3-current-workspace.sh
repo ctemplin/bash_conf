@@ -51,6 +51,11 @@ i3-focused-node-ppts ()
     i3-focused-node-percent | jq -j '( . * 100 ) | round '
 }
 
+i3-focused-node-display ()
+{
+    i3-focused-node | jq -j ' .output'
+}
+
 i3-wsj-file ()
 {
     local WSTEXT
