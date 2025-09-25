@@ -82,3 +82,24 @@ i3-wsj-diff ()
     fi
 }
 
+i3-window-has-matching-mark ()
+{
+    local MARK_PAT
+    MARK_PAT="$1"
+    i3-focused-node | jq -r --arg mark_pat "$MARK_PAT" '. | reduce .marks[] as $i (false; . or ( $i | test($mark_pat)))'
+
+}
+
+i3-notify-has-mark ()
+{
+    local MARK_PAT TRUE_MSG FALSE_MSG HAS_MATCH
+    MARK_PAT="$1"
+    TRUE_MSG=${2:-"True"}
+    FALSE_MSG=${3:-"False"}
+    HAS_MATCH=$(i3-window-has-matching-mark "$MARK_PAT")
+    if [ "$HAS_MATCH" == true ]; then 
+        notify-send -t 1000 -u critical "$TRUE_MSG"
+    else
+        notify-send -t 1000 -u normal   "$FALSE_MSG"
+    fi
+}
