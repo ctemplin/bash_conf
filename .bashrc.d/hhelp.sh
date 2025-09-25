@@ -1,13 +1,16 @@
 #!/usr/bin/bash
+# shellcheck shell=bash
+
 hhelp ()
 {
-  local output=$($1 -h || $1 --help)
-  local oplines=$(wc -l <<<$output)
-  local tplines=$(tput lines)
-  if (( $oplines > $tplines )); then
-    cat <<<$output | less
+  local output oplines tplines
+  output=$($1 -h || $1 --help)
+  oplines=$(wc -l <<<"$output")
+  tplines=$(tput lines)
+  if (( oplines > tplines )); then
+    cat <<<"$output" | less
   else
-    cat <<<$output
+    cat <<<"$output"
   fi
   return 0
 }
