@@ -23,7 +23,7 @@ warp_pointer_con_center ()
     WINDOW=$(xprop -root _NET_ACTIVE_WINDOW | cut -d' ' -f5)
 
     # Get window geometry
-    GEOMETRY=$(xwininfo -id $WINDOW | grep -E "(Absolute upper-left|Width:|Height:)")
+    GEOMETRY=$(xwininfo -id "$WINDOW" | grep -E "(Absolute upper-left|Width:|Height:)")
 
     # Parse geometry values
     X=$(echo "$GEOMETRY" | grep "Absolute upper-left X" | awk '{print $4}')
