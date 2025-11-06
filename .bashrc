@@ -176,6 +176,9 @@ alias journalctl-boot='journalctl --system --boot=0 --priority=4 -r'
 alias xpropthis='xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d " " -f 5)' 
 alias xwininfothis='xwininfo -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d " " -f 5)'
 
+# Enable/Disable use of the fingerprint reader
+alias togglefp='sudo  sed -i "/auth sufficient pam_fprintd.so/{s/^#//;t;s/^/#/}" /etc/pam.d/i3lock'
+
 # include hardware-specific aliases
 # make ~/bash_aliases symlink to file in /hwd
 if [ -f "$HOME/.bash_aliases" ] ; then
