@@ -174,6 +174,7 @@ alias type='type -a'
 alias journalctl-boot='journalctl --system --boot=0 --priority=4 -r'
 # Get all X properties for current window. You can append specific props to filter. i.e. _NET_WM_NAME...'
 alias xpropthis='xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d " " -f 5)' 
+alias xwininfothis='xwininfo -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d " " -f 5)'
 
 # include hardware-specific aliases
 # make ~/bash_aliases symlink to file in /hwd
