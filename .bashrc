@@ -51,7 +51,7 @@ export BASH_COMPLETION_USER_FILE=${BASH_COMPLETION_USER_DIR}/bash_completion
 case ${TERM} in
   xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
     # First line sets conditional to display non-0 return val in $PS1.
-    # Second line sets conditional to display non-0 background jobs count. 
+    # Second line sets conditional to display non-0 background jobs count.
     # Third line sets window title.
     PROMPT_COMMAND='\
     RET=$?; if (( RET == 0 )); then RET=""; else RET="[$RET]"; fi;\
@@ -178,7 +178,8 @@ alias xpropthis='xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d " " -f 5)'
 # include hardware-specific aliases
 # make ~/bash_aliases symlink to file in /hwd
 if [ -f "$HOME/.bash_aliases" ] ; then
-  source $HOME/.bash_aliases
+  # shellcheck disable=SC1091
+  source "$HOME"/.bash_aliases
 fi
 
 # set PATH so it includes user's private bin if it exists
